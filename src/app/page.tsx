@@ -7,7 +7,8 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 export default function Home() {
   return (
 		<QueryClientProvider client={queryClient}>
-			<TodoList />
+
+				<TodoList />
 			<ReactQueryDevtools initialIsOpen={false} />
 		</QueryClientProvider>
   );

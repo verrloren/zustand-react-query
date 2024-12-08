@@ -1,28 +1,51 @@
 "use client";
 
+import { CreateTaskDialogQuery } from "@/app/components/create-task-dialog-query";
 import { useTodoList } from "./use-todo-list";
+import { Button } from "@/components/ui/button";
+import { Trash2 } from "lucide-react";
+import { useDeleteTodo } from "./use-delete-todo";
+import { useToggleTodo } from "./use-toggle-todo";
 
 export function TodoList() {
-  const { cursor, error, isLoading, todoItems, isPlaceholderData } = useTodoList();
+  const { error, isLoading, todoItems } = useTodoList();
+	const deleteTodo = useDeleteTodo();
+	const { toggleTodo } = useToggleTodo();
 
   if (isLoading) return <div className="text-white">Loading...</div>;
   if (error) return <div>Error: {JSON.stringify(error)}</div>;
 
   return (
-    <div>
-      {todoItems.map((task) => (
-        task && (
-          <h5
-            className={`mb-2 text-white text-center ${
-              isPlaceholderData ? "opacity-50" : ""
-            }`}
-            key={task.id}
-          >
-            {task.title}
-          </h5>
+    <div className="w-full min-h-screen flex items-center justify-center flex-col relative">
+      <CreateTaskDialogQuery />
+
+      {todoItems ? (
+        todoItems.map(
+          (task) =>
+            task && (
+              <div style={{
+								width: "24rem",
+								height: "6rem",
+								backgroundColor: "#87C379",
+								borderRadius: "0.5rem",
+								padding: "1rem",
+								margin: "1rem",
+							}} key={task.id} className="w-96 h-24 flex justify-between items-center">
+								<input 
+									type="checkbox" 
+									checked={task.done} 
+									onChange={() => toggleTodo(task.id, task.done)} 
+								/>
+								<h5 className="mb-2 text-white text-center" >
+									{task.title}
+								</h5>
+								<Button disabled={deleteTodo.getIsPending(task.id)} onClick={() => deleteTodo.handleDelete(task.id)}><Trash2 className="text-white" /></Button>
+							</div>
+            )
         )
-      ))}
-      {cursor}
+      ) : (
+        <div>No tasks available</div>
+      )}
     </div>
   );
 }
