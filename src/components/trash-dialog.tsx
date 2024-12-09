@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { Trash2 } from "lucide-react";
-import { useTaskStore } from "../lib/store";
+import { useTaskStore } from "../app/lib/store";
 
 export function TrashDialog({ id }: { id: string }) {
 

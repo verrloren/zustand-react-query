@@ -7,11 +7,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import { Task } from "../lib/types";
+import { Task } from "../app/lib/types";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useTaskStore } from "../lib/store";
+import { useTaskStore } from "../app/lib/store";
 
 export function CreateTaskDialog() {
 

@@ -1,9 +1,9 @@
 'use client'
 
 import { useMemo } from "react";
-import { useTaskStore } from "../lib/store";
+import { useTaskStore } from "../app/lib/store";
 import { TaskComponent } from "./task-component";
-import { Status } from "../lib/types";
+import { Status } from "../app/lib/types";
 
 interface ColumnProps {
   header: string;

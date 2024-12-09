@@ -1,6 +1,6 @@
 'use client'
 
-import { useTaskStore } from "../lib/store";
+import { useTaskStore } from "../app/lib/store";
 import { TrashDialog } from "./trash-dialog"
 
 interface TaskComponentProps {

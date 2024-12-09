@@ -1,4 +1,4 @@
-import { Columns } from "../components/columns";
+import { Columns } from "../../components/columns";
 
 export default function TodosPage() {
 	return (

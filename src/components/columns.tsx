@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { createSwapy } from "swapy";
 import { Column } from "./column";
 import { CreateTaskDialog } from "./create-task-dialog";
-import { useTaskStore } from '../lib/store';
+import { useTaskStore } from '../app/lib/store';
 
 export function Columns() {
 

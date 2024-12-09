@@ -1,6 +1,6 @@
 "use client";
 
-import { CreateTaskDialogQuery } from "@/app/components/create-task-dialog-query";
+import { CreateTaskDialogQuery } from "@/components/create-task-dialog-query";
 import { useTodoList } from "./use-todo-list";
 import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
@@ -14,6 +14,7 @@ export function TodoList() {
 
   if (isLoading) return <div className="text-white">Loading...</div>;
   if (error) return <div>Error: {JSON.stringify(error)}</div>;
+
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center flex-col relative">

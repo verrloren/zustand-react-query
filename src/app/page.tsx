@@ -1,15 +1,16 @@
-'use client'
+"use client";
+import { ComponetsWrapper } from "@/components/componets-wrapper";
+import { queryClient } from "@/shared/api/query-client";
+import { store } from "@/shared/redux";
 import { QueryClientProvider } from "react-query";
-import { queryClient } from '../shared/api/query-client';
-import { TodoList } from "@/modules/todo-list/todo-list";
-import { ReactQueryDevtools } from 'react-query/devtools'
+import { Provider } from "react-redux";
 
 export default function Home() {
   return (
-		<QueryClientProvider client={queryClient}>
-
-				<TodoList />
-			<ReactQueryDevtools initialIsOpen={false} />
-		</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <ComponetsWrapper />
+      </Provider>
+    </QueryClientProvider>
   );
 }
