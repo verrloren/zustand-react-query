@@ -1,3 +1,4 @@
+'use client'
 import { rootReducer } from "@/shared/redux";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
