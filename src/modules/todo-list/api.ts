@@ -22,9 +22,9 @@ export type TodoDto = {
 // создать общий объект, в котором будут все методы для работы с сервером
 export const todoListApi = {
     baseKey: "tasks",
-    getTodoListQueryOptions: (): UseQueryOptions<TodoDto[]> => {
+    getTodoListQueryOptions: ({ userId }: { userId: string}): UseQueryOptions<TodoDto[]> => {
         return {
-            queryKey: [todoListApi.baseKey, "list"],
+            queryKey: [todoListApi.baseKey, "list", userId],
             queryFn: meta => 
                 jsonApiInstance<TodoDto[]>(
                     `/tasks`, {

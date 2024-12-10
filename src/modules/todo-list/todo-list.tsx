@@ -9,14 +9,12 @@ import { useToggleTodo } from "./use-toggle-todo";
 import { useCreateTodoLoading } from "./create-todo-thunk";
 
 export function TodoList() {
-  const { error, isLoading, todoItems } = useTodoList();
+  const { todoItems } = useTodoList();
 	
 	const isLoadingCreate = useCreateTodoLoading();
 	const deleteTodo = useDeleteTodo();
 	const { toggleTodo } = useToggleTodo();
 
-  if (isLoading) return <div className="text-white">Loading...</div>;
-  if (error) return <div>Error: {JSON.stringify(error)}</div>;
 
 
   return (

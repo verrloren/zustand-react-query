@@ -10,5 +10,6 @@ export function useUser() {
 	return useQuery({
 		...authApi.getUserById(userId!),
 		enabled: Boolean(userId),
+		suspense: true,
 	})
 }

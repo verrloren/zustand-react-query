@@ -31,10 +31,10 @@ export const createTodoThunk =
       queryKey: [todoListApi.baseKey],
     });
 
-    const prevTasks = queryClient.getQueryData([todoListApi.getTodoListQueryOptions().queryKey]);
+    const prevTasks = queryClient.getQueryData([todoListApi.getTodoListQueryOptions({ userId }).queryKey]);
 
     queryClient.setQueryData(
-      [todoListApi.getTodoListQueryOptions().queryKey],
+      [todoListApi.getTodoListQueryOptions({ userId }).queryKey],
       (tasks: TodoDto[] = []) => [...tasks, newTodo]
     );
 
@@ -45,7 +45,7 @@ export const createTodoThunk =
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
       queryClient.setQueriesData(
-        [todoListApi.getTodoListQueryOptions().queryKey],
+        [todoListApi.getTodoListQueryOptions({ userId }).queryKey],
         prevTasks
       );
     } finally {

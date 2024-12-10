@@ -1,15 +1,21 @@
 import { useQuery } from "react-query";
 import { todoListApi } from "./api";
+import { useUser } from "../auth/use-user";
 
 export const useTodoList = () => {
-  const {
+
+	const userId = useUser().data?.id;
+
+	if (!userId) {
+		throw new Error("User is not found");
+	}
+	const {
     data: todoItems,
-    error,
-    isLoading,
   } = useQuery({
-    ...todoListApi.getTodoListQueryOptions(),
-		select: data => data.toReversed()
+    ...todoListApi.getTodoListQueryOptions({ userId: userId }),
+		select: data => data.toReversed(),
+		suspense: true
   });
 
-  return { todoItems, error, isLoading };
+  return { todoItems };
 };
